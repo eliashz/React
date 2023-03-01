@@ -47,14 +47,18 @@ function App() {
 
   return (
     <>
-      <Header
-        filters={filters}
-        setFilters={setFilters}
-        categories={categories(products)}
-      />
       {loading && <h5>Loading...</h5>}
       {isError && <h5>Error</h5>}
-      {isSuccess && <Products products={filteredProducts} />}
+      {isSuccess && (
+        <>
+          <Header
+            filters={filters}
+            changeFilters={setFilters}
+            categories={categories(products)}
+          />
+          <Products products={filteredProducts} />
+        </>
+      )}
       {/* <Products products={products} /> */}
     </>
   );

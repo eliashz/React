@@ -1,32 +1,35 @@
-import React, { useState } from "react";
+import React, { useId } from "react";
 import "./Filters.css";
 
-const Filters = ({ filters, setFilters, categories }) => {
+const Filters = ({ filters, changeFilters, categories }) => {
+  const maxPriceFilterId = useId();
+  const categoryFilterId = useId();
+
   const handleChangeMaxPrice = (e) => {
-    setFilters({ ...filters, maxPrice: e.target.value });
+    changeFilters((prevState) => ({ ...prevState, maxPrice: e.target.value }));
   };
 
   const handleChangeCategory = (e) => {
-    setFilters({ ...filters, category: e.target.value });
-    console.log(e.target.value);
+    changeFilters((prevState) => ({ ...prevState, category: e.target.value }));
   };
 
   return (
     <section className="filters">
       <div>
-        <label htmlFor="price">Price</label>
+        <label htmlFor={maxPriceFilterId}>Price</label>
         <input
           type="range"
-          id="id"
+          id={maxPriceFilterId}
           min={filters.minPrice}
           max={filters.maxValue}
+          defaultValue={filters.maxValue}
           onChange={handleChangeMaxPrice}
         />
         <span>${filters.maxPrice}</span>
       </div>
       <div>
-        <label htmlFor="category">Category</label>
-        <select id="category" onChange={handleChangeCategory}>
+        <label htmlFor={categoryFilterId}>Category</label>
+        <select id={categoryFilterId} onChange={handleChangeCategory}>
           <option value="all">All</option>
           {categories.map((category) => (
             <option key={category} value={category}>
