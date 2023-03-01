@@ -3,6 +3,7 @@ import Products from "./components/Products";
 import { useFetch } from "./hooks/";
 import { url } from "./constants";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const useFilters = () => {
   const [filters, setFilters] = useState({
@@ -62,6 +63,7 @@ function App() {
             categories={categories(products)}
           />
           <Products products={filteredProducts} />
+          <Footer filters={filters} />
         </>
       )}
     </>
