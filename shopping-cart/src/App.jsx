@@ -4,16 +4,32 @@ import { useFetch } from "./hooks/";
 import { url } from "./constants";
 import Header from "./components/Header";
 
-function App() {
-  const { data, loading, isError, isSuccess } = useFetch(url.products);
-  const [products, setProducts] = useState([]);
-  // const [max, setMax] = useState();
-
+const useFilters = () => {
   const [filters, setFilters] = useState({
     category: "all",
     minPrice: 0,
     maxPrice: 0,
   });
+
+  const filterProducts = (products) => {
+    return products.filter((product) => {
+      return (
+        product.price <= filters.maxPrice &&
+        (filters.category === "all" || product.category === filters.category)
+      );
+    });
+  };
+
+  return { filterProducts, setFilters, filters };
+};
+
+function App() {
+  const { data, loading, isError, isSuccess } = useFetch(url.products);
+  const [products, setProducts] = useState([]);
+
+  const { filterProducts, setFilters, filters } = useFilters();
+
+  const filteredProducts = filterProducts(products);
 
   useEffect(() => {
     if (!data) return;
@@ -25,17 +41,6 @@ function App() {
       maxValue: Math.max(...products.map((d) => d.price)),
     });
   }, [data]);
-
-  const filterProducts = (products) => {
-    return products.filter((product) => {
-      return (
-        product.price <= filters.maxPrice &&
-        (filters.category === "all" || product.category === filters.category)
-      );
-    });
-  };
-
-  const filteredProducts = filterProducts(products);
 
   const categories = (products) => {
     const cat = [];
@@ -59,7 +64,6 @@ function App() {
           <Products products={filteredProducts} />
         </>
       )}
-      {/* <Products products={products} /> */}
     </>
   );
 }
