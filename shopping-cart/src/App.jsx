@@ -7,20 +7,24 @@ import { products as initialProducts } from "../db.json";
 function App() {
   const { data, loading, isError, isSuccess } = useFetch(url.products);
   const [products, setProducts] = useState([]);
-  const [max, setMax] = useState(0);
+  // const [max, setMax] = useState();
+
+  const [filters, setFilters] = useState({
+    category: "all",
+    maxPrice: 0,
+  });
 
   useEffect(() => {
     if (!data) return;
     setProducts(data);
-    setMax(Math.max(...data.map((d) => d.price)));
-    console.log(max);
+    setFilters({
+      ...filters,
+      maxPrice: Math.max(...products.map((d) => d.price)),
+    });
+    console.log();
   }, [data]);
-  const [filters, setFilters] = useState({
-    category: "all",
-    maxPrice: max,
-  });
 
-  console.log(filters);
+  console.log("asass", filters);
 
   const filterProducts = (products) => {
     return products.filter((product) => {
