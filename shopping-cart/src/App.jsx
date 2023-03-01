@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Products from "./components/Products";
 import { useFetch } from "./hooks/";
 import { url } from "./constants";
-import { products as initialProducts } from "../db.json";
+import Header from "./components/Header";
 
 function App() {
   const { data, loading, isError, isSuccess } = useFetch(url.products);
@@ -24,8 +24,6 @@ function App() {
     console.log();
   }, [data]);
 
-  console.log("asass", filters);
-
   const filterProducts = (products) => {
     return products.filter((product) => {
       return (
@@ -39,6 +37,7 @@ function App() {
 
   return (
     <>
+      <Header />
       {loading && <h5>Loading...</h5>}
       {isError && <h5>Error</h5>}
       {isSuccess && <Products products={filteredProducts} />}
