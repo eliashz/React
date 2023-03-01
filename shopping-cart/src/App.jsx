@@ -11,6 +11,7 @@ function App() {
 
   const [filters, setFilters] = useState({
     category: "all",
+    minPrice: 0,
     maxPrice: 0,
   });
 
@@ -19,9 +20,10 @@ function App() {
     setProducts(data);
     setFilters({
       ...filters,
+      minPrice: Math.min(...products.map((d) => d.price)),
       maxPrice: Math.max(...products.map((d) => d.price)),
+      maxValue: Math.max(...products.map((d) => d.price)),
     });
-    console.log();
   }, [data]);
 
   const filterProducts = (products) => {
@@ -35,9 +37,21 @@ function App() {
 
   const filteredProducts = filterProducts(products);
 
+  const categories = (products) => {
+    const cat = [];
+    products.map((product) => {
+      !cat.includes(product.category) && cat.push(product.category);
+    });
+    return cat;
+  };
+  
   return (
     <>
-      <Header />
+      <Header
+        filters={filters}
+        setFilters={setFilters}
+        categories={categories(products)}
+      />
       {loading && <h5>Loading...</h5>}
       {isError && <h5>Error</h5>}
       {isSuccess && <Products products={filteredProducts} />}
