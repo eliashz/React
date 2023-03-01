@@ -18,7 +18,6 @@ const Filters = ({ filters, setFilters, categories }) => {
         <input
           type="range"
           id="id"
-          defaultValue={filters.maxValue}
           min={filters.minPrice}
           max={filters.maxValue}
           onChange={handleChangeMaxPrice}
