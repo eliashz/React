@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Products from "./components/Products";
 import { useFetch } from "./hooks/";
 import { url } from "./constants";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-//1:09:00
+import { FiltersContext } from "./context/filters";
+//
 const useFilters = () => {
-  const [filters, setFilters] = useState({
-    category: "all",
-    minPrice: 0,
-    maxPrice: 0,
-  });
+  const { filters, setFilters } = useContext(FiltersContext);
+  console.log(filters);
+  const serFilters = () => {};
 
   const filterProducts = (products) => {
     return products.filter((product) => {
@@ -35,12 +34,12 @@ function App() {
   useEffect(() => {
     if (!data) return;
     setProducts(data);
-    setFilters({
+    /*     setFilters({
       ...filters,
       minPrice: Math.min(...products.map((d) => d.price)),
       maxPrice: Math.max(...products.map((d) => d.price)),
       maxValue: Math.max(...products.map((d) => d.price)),
-    });
+    }); */
   }, [data]);
 
   const categories = (products) => {
