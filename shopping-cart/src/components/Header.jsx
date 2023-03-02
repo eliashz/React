@@ -1,15 +1,11 @@
 import React from "react";
 import Filters from "./Filters";
 
-const Header = ({ filters, changeFilters, categories }) => {
+const Header = ({ categories }) => {
   return (
     <header>
       <h1>React Shop</h1>
-      <Filters
-        filters={filters}
-        changeFilters={changeFilters}
-        categories={categories}
-      />
+      <Filters categories={categories} />
     </header>
   );
 };

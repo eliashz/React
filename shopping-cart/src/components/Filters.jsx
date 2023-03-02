@@ -1,16 +1,19 @@
 import React, { useId } from "react";
+import { useFilters } from "../hooks";
 import "./Filters.css";
 
-const Filters = ({ filters, changeFilters, categories }) => {
+const Filters = ({ categories }) => {
+  const { setFilters, filters } = useFilters();
+
   const maxPriceFilterId = useId();
   const categoryFilterId = useId();
 
   const handleChangeMaxPrice = (e) => {
-    changeFilters((prevState) => ({ ...prevState, maxPrice: e.target.value }));
+    setFilters((prevState) => ({ ...prevState, maxPrice: e.target.value }));
   };
 
   const handleChangeCategory = (e) => {
-    changeFilters((prevState) => ({ ...prevState, category: e.target.value }));
+    setFilters((prevState) => ({ ...prevState, category: e.target.value }));
   };
 
   return (
@@ -23,7 +26,7 @@ const Filters = ({ filters, changeFilters, categories }) => {
           // key={`${Math.floor(Math.random() * 1000)}-min`}
           min={filters.minPrice}
           max={filters.maxValue}
-          defaultValue={filters.maxPrice}
+          value={filters.maxPrice}
           onChange={handleChangeMaxPrice}
         />
         <span>${filters.maxPrice}</span>
