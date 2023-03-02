@@ -34,7 +34,7 @@ function App() {
         <>
           <Header categories={findCategories(products)} />
           <Products products={filteredProducts} />
-          <Footer filters={filters} />
+          <Footer />
         </>
       )}
     </>
