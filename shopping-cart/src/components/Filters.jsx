@@ -3,7 +3,7 @@ import { useFilters } from "../hooks";
 import "./Filters.css";
 
 const Filters = ({ categories }) => {
-  const { setFilters, filters } = useFilters();
+  const { setFilters, filters, filterProducts } = useFilters();
 
   const maxPriceFilterId = useId();
   const categoryFilterId = useId();
@@ -23,7 +23,6 @@ const Filters = ({ categories }) => {
         <input
           type="range"
           id={maxPriceFilterId}
-          // key={`${Math.floor(Math.random() * 1000)}-min`}
           min={filters.minPrice}
           max={filters.maxValue}
           value={filters.maxPrice}

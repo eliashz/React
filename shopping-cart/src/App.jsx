@@ -18,12 +18,12 @@ function App() {
   useEffect(() => {
     if (!data) return;
     setProducts(data);
-    /*     setFilters({
+    setFilters({
       ...filters,
-      minPrice: Math.min(...products.map((d) => d.price)),
-      maxPrice: Math.max(...products.map((d) => d.price)),
-      maxValue: Math.max(...products.map((d) => d.price)),
-    }); */
+      minPrice: Math.min(...data.map((d) => d.price)),
+      maxPrice: Math.max(...data.map((d) => d.price)),
+      maxValue: Math.max(...data.map((d) => d.price)),
+    });
   }, [data]);
 
   return (
