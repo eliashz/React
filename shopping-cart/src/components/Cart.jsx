@@ -1,3 +1,4 @@
+import "./Cart.css";
 import React, { useId } from "react";
 import { CartIcon, ClearCartIcon, RemoveFromCartIcon } from "./Icons";
 
