@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { findCategories } from "./helpers";
 import Cart from "./components/Cart";
+import { CartProvider } from "./context/cart";
 //
 
 function App() {
@@ -32,12 +33,12 @@ function App() {
       {loading && <h5>Loading...</h5>}
       {isError && <h5>Error</h5>}
       {isSuccess && (
-        <>
+        <CartProvider>
           <Header categories={findCategories(products)} />
           <Cart />
           <Products products={filteredProducts} />
           <Footer />
-        </>
+        </CartProvider>
       )}
     </>
   );

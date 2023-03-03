@@ -1,9 +1,10 @@
 import "./Cart.css";
 import React, { useId } from "react";
-import { CartIcon, ClearCartIcon, RemoveFromCartIcon } from "./Icons";
+import { CartIcon, ClearCartIcon } from "./Icons";
 
 const Cart = () => {
   const cartCheckboxId = useId();
+
   return (
     <>
       <label className="cart-button" htmlFor={cartCheckboxId}>
