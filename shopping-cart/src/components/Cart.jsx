@@ -12,12 +12,22 @@ const Cart = () => {
       <aside className="cart">
         <ul>
           <li>
-            <img src="" alt="" />
+            <img
+              src="https://i.dummyjson.com/data/products/30/3.jpg"
+              alt="key"
+            />
           </li>
           <div>
-            <strong>iPhone</strong> - $1490
+            <strong>Key</strong> - $12
           </div>
+          <footer>
+            <small>Qty: 1</small>
+            <button>+</button>
+          </footer>
         </ul>
+        <button>
+          <ClearCartIcon />
+        </button>
       </aside>
     </>
   );

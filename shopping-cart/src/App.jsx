@@ -5,6 +5,7 @@ import { url } from "./constants";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { findCategories } from "./helpers";
+import Cart from "./components/Cart";
 //
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       {isSuccess && (
         <>
           <Header categories={findCategories(products)} />
+          <Cart />
           <Products products={filteredProducts} />
           <Footer />
         </>
