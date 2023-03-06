@@ -39,7 +39,6 @@ export function CartProvider({ children }) {
 
   const removeOneFromCart = (product) => {
     product.quantity--;
-
     setTotal((prevState) => prevState - product.price);
   };
 
