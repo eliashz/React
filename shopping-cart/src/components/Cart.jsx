@@ -6,7 +6,7 @@ import CartItem from "./CartItem";
 
 const Cart = () => {
   const cartCheckboxId = useId();
-  const { cart, clearCart, addToCart, total } = useCart();
+  const { cart, clearCart, addToCart, total, removeOneFromCart } = useCart();
 
   return (
     <>
@@ -20,6 +20,7 @@ const Cart = () => {
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
+              removeOneFromCart={() => removeOneFromCart(product)}
               {...product}
             />
           ))}
