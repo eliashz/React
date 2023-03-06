@@ -8,6 +8,7 @@ export function FiltersProvider({ children }) {
     minPrice: 12,
     maxPrice: 1500,
     maxValue: 1500,
+    lowToHigh: true,
   });
   return (
     <FiltersContext.Provider value={{ filters, setFilters }}>

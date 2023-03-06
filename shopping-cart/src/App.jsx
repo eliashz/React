@@ -13,9 +13,12 @@ function App() {
   const { data, loading, isError, isSuccess } = useFetch(url.products);
   const [products, setProducts] = useState([]);
 
-  const { filterProducts, setFilters, filters } = useFilters();
+  const { filterProducts, setFilters, filters, orderProductsByPrice } =
+    useFilters();
 
   const filteredProducts = filterProducts(products);
+
+  const orderedProducts = orderProductsByPrice(products);
 
   useEffect(() => {
     if (!data) return;

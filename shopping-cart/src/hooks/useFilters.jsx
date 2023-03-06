@@ -13,7 +13,11 @@ const useFilters = () => {
     });
   };
 
-  return { filterProducts, setFilters, filters };
+  const orderProductsByPrice = (products) => {
+    return products.sort((a, b) => a.price - b.price);
+  };
+
+  return { filterProducts, setFilters, filters, orderProductsByPrice };
 };
 
 export default useFilters;

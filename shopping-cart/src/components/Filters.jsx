@@ -3,7 +3,7 @@ import { useFilters } from "../hooks";
 import "./Filters.css";
 
 const Filters = ({ categories }) => {
-  const { setFilters, filters, filterProducts } = useFilters();
+  const { setFilters, filters, orderProductsByPrice } = useFilters();
 
   const maxPriceFilterId = useId();
   const categoryFilterId = useId();
@@ -41,7 +41,9 @@ const Filters = ({ categories }) => {
           ))}
         </select>
       </div>
-      <button>Lowest to Highest</button>
+      <button onClick={() => {}}>
+        {filters.lowToHigh ? "Lowest to Highest" : "Highest to Lowest"}
+      </button>
     </section>
   );
 };
