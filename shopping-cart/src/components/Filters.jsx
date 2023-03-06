@@ -41,6 +41,7 @@ const Filters = ({ categories }) => {
           ))}
         </select>
       </div>
+      <button>Lowest to Highest</button>
     </section>
   );
 };
