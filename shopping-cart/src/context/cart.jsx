@@ -20,7 +20,6 @@ const reducer = (state, action) => {
         return newState;
       }
 
-      // return [state, { ...actionPayload, quantity: 1 }];
       return {
         products: [...state.products, { ...actionPayload, quantity: 1 }],
         total: state.total + actionPayload.price,
@@ -29,7 +28,10 @@ const reducer = (state, action) => {
 
     case "REMOVE_FROM_CART": {
       const { id } = actionPayload;
-      return state.products.filter((item) => item.id !== id);
+      return {
+        products: [...state.products.filter((item) => item.id !== id)],
+        total: state.total - actionPayload.price,
+      };
     }
 
     case "REMOVE_ONE_FROM_CART": {
@@ -54,12 +56,10 @@ export function CartProvider({ children }) {
 
   const removeFromCart = (product) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: product });
-    const productInCart = state.findIndex((item) => item.id === product.id);
   };
 
   const removeOneFromCart = (product) => {
     dispatch({ type: "REMOVE_ONE_FROM_CART", payload: product });
-    setTotal((prevState) => prevState - product.price);
   };
 
   const clearCart = () => {

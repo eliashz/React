@@ -26,7 +26,7 @@ const Cart = () => {
             />
           ))}
         </ul>
-        <div>{cart.total > 0 && <strong>TOTAL: {cart.total}</strong>}</div>
+        <div>{cart.total > 0 && <strong>TOTAL: ${cart.total}</strong>}</div>
         <button onClick={clearCart}>
           <ClearCartIcon />
         </button>
