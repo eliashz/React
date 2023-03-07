@@ -6,7 +6,7 @@ const Products = ({ products }) => {
   const { addToCart, removeFromCart, cart } = useCart();
 
   const checkProductInCart = (product) =>
-    cart.some((item) => item.id === product.id);
+    cart.products.some((item) => item.id === product.id);
 
   return (
     <main className="products">

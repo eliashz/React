@@ -7,6 +7,7 @@ import CartItem from "./CartItem";
 const Cart = () => {
   const cartCheckboxId = useId();
   const { cart, clearCart, addToCart, total, removeOneFromCart } = useCart();
+  console.log("cart", cart);
 
   return (
     <>
@@ -16,7 +17,7 @@ const Cart = () => {
       <input id={cartCheckboxId} type="checkbox" hidden />
       <aside className="cart">
         <ul>
-          {cart.map((product) => (
+          {cart.products.map((product) => (
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
@@ -25,7 +26,7 @@ const Cart = () => {
             />
           ))}
         </ul>
-        <div>{total > 0 && <strong>TOTAL: {total}</strong>}</div>
+        <div>{cart.total > 0 && <strong>TOTAL: {cart.total}</strong>}</div>
         <button onClick={clearCart}>
           <ClearCartIcon />
         </button>
