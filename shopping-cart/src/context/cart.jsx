@@ -4,11 +4,18 @@ export const CartContext = createContext();
 
 const initialState = { products: [], total: 0 };
 
+export const Actions = {
+  ADD_TO_CART: "ADD_TO_CART",
+  REMOVE_FROM_CART: "REMOVE_FROM_CART",
+  REMOVE_ONE_FROM_CART: "REMOVE_ONE_FROM_CART",
+  CLEAR_CART: "CLEAR_CART",
+};
+
 const reducer = (state, action) => {
   const { type: actionType, payload: actionPayload } = action;
 
   switch (action.type) {
-    case "ADD_TO_CART": {
+    case Actions.ADD_TO_CART: {
       const { id, price } = actionPayload;
       const productInCart = state.products.findIndex((item) => item.id === id);
 
@@ -28,7 +35,7 @@ const reducer = (state, action) => {
       };
     }
 
-    case "REMOVE_FROM_CART": {
+    case Actions.REMOVE_FROM_CART: {
       const { id, price } = actionPayload;
 
       const productInCart = state.products.filter((item) => item.id === id);
@@ -39,14 +46,14 @@ const reducer = (state, action) => {
       };
     }
 
-    case "REMOVE_ONE_FROM_CART": {
+    case Actions.REMOVE_ONE_FROM_CART: {
       const { price } = actionPayload;
 
       actionPayload.quantity--;
       return { ...state, total: state.total - price };
     }
 
-    case "CLEAR_CART": {
+    case Actions.CLEAR_CART: {
       return initialState;
     }
     default:
@@ -58,19 +65,19 @@ export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const addToCart = (product) => {
-    dispatch({ type: "ADD_TO_CART", payload: product });
+    dispatch({ type: Actions.ADD_TO_CART, payload: product });
   };
 
   const removeFromCart = (product) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: product });
+    dispatch({ type: Actions.REMOVE_FROM_CART, payload: product });
   };
 
   const removeOneFromCart = (product) => {
-    dispatch({ type: "REMOVE_ONE_FROM_CART", payload: product });
+    dispatch({ type: Actions.REMOVE_ONE_FROM_CART, payload: product });
   };
 
   const clearCart = () => {
-    dispatch({ type: "CLEAR_CART" });
+    dispatch({ type: Actions.CLEAR_CART });
   };
 
   return (
