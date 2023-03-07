@@ -25,9 +25,9 @@ function App() {
     setProducts(data.products);
     setFilters({
       ...filters,
-      minPrice: Math.min(...products.map((d) => d.price)),
-      maxPrice: Math.max(...products.map((d) => d.price)),
-      maxValue: Math.max(...products.map((d) => d.price)),
+      minPrice: Math.min(...data.products.map((d) => d.price)),
+      maxPrice: Math.max(...data.products.map((d) => d.price)),
+      maxValue: Math.max(...data.products.map((d) => d.price)),
     });
   }, [data]);
 

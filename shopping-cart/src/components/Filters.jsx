@@ -33,7 +33,7 @@ const Filters = ({ categories }) => {
       <div>
         <label htmlFor={categoryFilterId}>Category</label>
         <select id={categoryFilterId} onChange={handleChangeCategory}>
-          <option value="all">All</option>
+          <option value="all">all</option>
           {categories.map((category) => (
             <option key={category} value={category}>
               {category}
