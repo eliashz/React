@@ -2,7 +2,6 @@ import React, { createContext, useReducer } from "react";
 
 export const CartContext = createContext();
 
-// const initialState = [];
 const initialState = { products: [], total: 0 };
 
 const reducer = (state, action) => {
@@ -12,13 +11,11 @@ const reducer = (state, action) => {
     case "ADD_TO_CART": {
       const { id, price } = actionPayload;
       const productInCart = state.products.findIndex((item) => item.id === id);
-      // console.log("id", state);
 
       if (productInCart >= 0) {
         const newState = structuredClone(state.products);
         newState[productInCart].quantity += 1;
-        console.log(newState, productInCart);
-        console.log(state);
+
         return {
           products: [...newState],
           total: state.total + price,
@@ -35,7 +32,6 @@ const reducer = (state, action) => {
       const { id, price } = actionPayload;
 
       const productInCart = state.products.filter((item) => item.id === id);
-      console.log("pic", productInCart.quantity);
 
       return {
         products: [...state.products.filter((item) => item.id !== id)],
@@ -44,9 +40,10 @@ const reducer = (state, action) => {
     }
 
     case "REMOVE_ONE_FROM_CART": {
-      console.log(actionPayload.quantity);
+      const { price } = actionPayload;
+
       actionPayload.quantity--;
-      return { ...state, total: state.total - actionPayload.price };
+      return { ...state, total: state.total - price };
     }
 
     case "CLEAR_CART": {
