@@ -12,8 +12,6 @@ export const cartInitialState = JSON.parse(
   total: 0,
 };
 
-console.log(cartInitialState);
-
 export const updateLocalStorage = (state) => {
   window.localStorage.setItem("cart", JSON.stringify(state));
 };

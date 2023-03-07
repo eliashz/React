@@ -23,12 +23,12 @@ function App() {
   useEffect(() => {
     if (!data) return;
     setProducts(data.products);
-    setFilters({
-      ...filters,
+    setFilters((prevState) => ({
+      ...prevState,
       minPrice: Math.min(...data.products.map((d) => d.price)),
       maxPrice: Math.max(...data.products.map((d) => d.price)),
       maxValue: Math.max(...data.products.map((d) => d.price)),
-    });
+    }));
   }, [data]);
 
   return (
