@@ -1,4 +1,5 @@
 import React from "react";
+import { formatCurrency } from "../helpers";
 
 const CartItem = ({
   thumbnail,
@@ -12,7 +13,7 @@ const CartItem = ({
     <li>
       <img src={thumbnail} alt={title} />
       <div>
-        <strong>{title}</strong>: ${price}
+        <strong>{title}</strong>: {formatCurrency(price)}
       </div>
       <footer>
         <button disabled={quantity === 1} onClick={removeOneFromCart}>

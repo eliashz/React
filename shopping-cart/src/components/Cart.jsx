@@ -3,11 +3,12 @@ import React, { useId } from "react";
 import { CartIcon, ClearCartIcon } from "./Icons";
 import { useCart } from "../hooks";
 import CartItem from "./CartItem";
+import formatCurrency from "../helpers/formatCurrency";
 
 const Cart = () => {
   const cartCheckboxId = useId();
   const { cart, clearCart, addToCart, removeOneFromCart } = useCart();
-  console.log(cart);
+  // console.log(cart);
   return (
     <>
       <label className="cart-button" htmlFor={cartCheckboxId}>
@@ -25,7 +26,11 @@ const Cart = () => {
             />
           ))}
         </ul>
-        <div>{cart.total > 0 && <strong>TOTAL: ${cart.total}</strong>}</div>
+        <div>
+          {cart.total > 0 && (
+            <strong>TOTAL: {formatCurrency(cart.total)}</strong>
+          )}
+        </div>
         {cart.products.length === 0 ? (
           <h6>Cart Empty</h6>
         ) : (

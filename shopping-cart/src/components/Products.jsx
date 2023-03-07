@@ -1,6 +1,7 @@
 import "./Products.css";
 import { AddToCartIcon, RemoveFromCartIcon } from "./Icons.jsx";
 import { useCart } from "../hooks";
+import formatCurrency from "../helpers/formatCurrency";
 
 const Products = ({ products }) => {
   const { addToCart, removeFromCart, cart } = useCart();
@@ -17,7 +18,8 @@ const Products = ({ products }) => {
             <li key={product.id}>
               <img src={product.thumbnail} alt={product.title} />
               <div>
-                <strong>{product.title}</strong> - ${product.price}
+                <strong>{product.title}</strong> -{" "}
+                {formatCurrency(product.price)}
               </div>
               <div>
                 <button

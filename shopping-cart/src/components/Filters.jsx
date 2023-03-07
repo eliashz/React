@@ -1,4 +1,5 @@
 import React, { useId } from "react";
+import formatCurrency from "../helpers/formatCurrency";
 import { useFilters } from "../hooks";
 import "./Filters.css";
 
@@ -20,6 +21,7 @@ const Filters = ({ categories }) => {
     <section className="filters">
       <div>
         <label htmlFor={maxPriceFilterId}>Price</label>
+        <span>{formatCurrency(filters.minPrice)}</span>
         <input
           type="range"
           id={maxPriceFilterId}
@@ -28,7 +30,7 @@ const Filters = ({ categories }) => {
           value={filters.maxPrice}
           onChange={handleChangeMaxPrice}
         />
-        <span>${filters.maxPrice}</span>
+        <span>{formatCurrency(filters.maxPrice)}</span>
       </div>
       <div>
         <label htmlFor={categoryFilterId}>Category</label>
@@ -41,7 +43,7 @@ const Filters = ({ categories }) => {
           ))}
         </select>
       </div>
-      <button onClick={() => {}}>
+      <button onClick={() => alert("Fuerte chichón.")}>
         {filters.lowToHigh ? "Lowest to Highest" : "Highest to Lowest"}
       </button>
     </section>
