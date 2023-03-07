@@ -1,1 +1,1 @@
-export default { products: "http://localhost:3000/products" };
+export default { products: "https://dummyjson.com/products" };

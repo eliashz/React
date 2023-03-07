@@ -22,15 +22,16 @@ function App() {
 
   useEffect(() => {
     if (!data) return;
-    setProducts(data);
+    setProducts(data.products);
     setFilters({
       ...filters,
-      minPrice: Math.min(...data.map((d) => d.price)),
-      maxPrice: Math.max(...data.map((d) => d.price)),
-      maxValue: Math.max(...data.map((d) => d.price)),
+      minPrice: Math.min(...products.map((d) => d.price)),
+      maxPrice: Math.max(...products.map((d) => d.price)),
+      maxValue: Math.max(...products.map((d) => d.price)),
     });
   }, [data]);
 
+  console.log(data);
   return (
     <>
       {loading && <h5>Loading...</h5>}

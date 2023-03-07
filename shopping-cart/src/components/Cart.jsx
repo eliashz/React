@@ -7,7 +7,6 @@ import CartItem from "./CartItem";
 const Cart = () => {
   const cartCheckboxId = useId();
   const { cart, clearCart, addToCart, total, removeOneFromCart } = useCart();
-  console.log("cart", cart.products.length);
 
   return (
     <>
