@@ -31,7 +31,6 @@ function App() {
     });
   }, [data]);
 
-  console.log(data);
   return (
     <>
       {loading && <h5>Loading...</h5>}
@@ -41,7 +40,7 @@ function App() {
           <Header categories={findCategories(products)} />
           <Cart />
           <Products products={filteredProducts} />
-          <Footer />
+          {/* <Footer /> */}
         </CartProvider>
       )}
     </>
