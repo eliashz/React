@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import { findCategories } from "./helpers";
 import Cart from "./components/Cart";
 import { CartProvider } from "./context/cart";
-//
 
 function App() {
   const { data, loading, isError, isSuccess } = useFetch(url.products);
