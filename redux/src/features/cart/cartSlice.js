@@ -25,13 +25,15 @@ const cartSlice = createSlice({
       cartItem.amount++;
     },
     decrease: (state, { payload }) => {
+      console.log(state.cartItems);
       const cartItem = state.cartItems.find((item) => item.id === payload.id);
       cartItem.amount--;
     },
     calculateTotals: (state) => {
-      let amount,
-        total = 0;
-      cartItems.forEach((item) => {
+      let amount = 0;
+      let total = 0;
+
+      state.cartItems.forEach((item) => {
         amount += item.amount;
         total += item.amount * item.price;
       });
