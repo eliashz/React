@@ -11,7 +11,7 @@ export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
 
 const initialState = {
   cartItems,
-  amount: 4,
+  amount: cartItems.length,
   total: 0,
   isLoading: true,
 };
@@ -22,7 +22,6 @@ const cartSlice = createSlice({
   reducers: {
     clearCart: (state) => {
       state.cartItems = [];
-      // state.amount = 0;
     },
     removeItem: (state, action) => {
       const itemId = action.payload;
@@ -47,6 +46,18 @@ const cartSlice = createSlice({
       });
       state.amount = amount;
       state.total = total;
+    },
+  },
+  extraReducers: {
+    [getCartItems.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getCartItems.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.cartItems = action;
+    },
+    [getCartItems.pending]: (state) => {
+      state.rejected = false;
     },
   },
 });
