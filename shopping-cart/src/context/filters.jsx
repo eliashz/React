@@ -6,8 +6,8 @@ export function FiltersProvider({ children }) {
   const [filters, setFilters] = useState({
     category: "all",
     minPrice: 12,
-    maxPrice: 1500,
-    maxValue: 1500,
+    maxPrice: 2500,
+    maxValue: 2500,
     lowToHigh: true,
   });
   return (

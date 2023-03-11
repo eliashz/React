@@ -1,12 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { url } from "../constants";
 
+const getUrl = (skip = 0, limit = 9) => {
+  console.log("skip", skip);
+  return `${url.products}?skip=${skip}&limit=${limit}`;
+};
+
 export const getProducts = createAsyncThunk(
   "products/getProducts",
-  async (_, thunkAPI) => {
+  async (skip, thunkAPI) => {
     try {
-      const res = await fetch(url.products);
+      console.log(getUrl(skip));
+      const res = await fetch(getUrl(skip));
       const data = await res.json();
+      console.log(data);
       return data.products;
     } catch (err) {
       console.log(err);
@@ -38,7 +45,8 @@ const productsSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.data = action.payload;
+        state.data = [...state.data, ...action.payload];
+        console.log("AP", action.payload);
         action.payload.forEach((product) => {
           if (!state.categories.includes(product.category))
             state.categories.push(product.category);

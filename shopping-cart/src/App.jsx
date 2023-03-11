@@ -9,18 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "./store/products.slice";
 
 function App() {
-  const { data, categories, isError, isLoading, isSuccess } = useSelector(
+  const [skip, setSkip] = useState(0);
+  const { isError, isLoading, isSuccess } = useSelector(
     (state) => state.products
   );
   const dispatch = useDispatch();
 
-  // console.log("data", categories);
-
-  // const orderedProducts = orderProductsByPrice(products);
-
   useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+    dispatch(getProducts(skip));
+  }, [skip]);
 
   /*   useEffect(() => {
     if (!data) return;
@@ -41,7 +38,7 @@ function App() {
         <CartProvider>
           <Header />
           <Cart />
-          <Products />
+          <Products setSkip={setSkip} />
           {/* <Footer /> */}
         </CartProvider>
       )}
