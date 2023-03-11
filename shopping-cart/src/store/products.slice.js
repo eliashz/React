@@ -13,7 +13,7 @@ export const getProducts = createAsyncThunk(
       console.log(getUrl(skip));
       const res = await fetch(getUrl(skip));
       const data = await res.json();
-      console.log(data);
+      console.log("fetch", data);
       return data.products;
     } catch (err) {
       console.log(err);

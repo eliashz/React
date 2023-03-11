@@ -10,14 +10,24 @@ import { getProducts } from "./store/products.slice";
 
 function App() {
   const [skip, setSkip] = useState(0);
-  const { isError, isLoading, isSuccess } = useSelector(
+  const { setFilters, filters } = useFilters();
+
+  const { isError, isLoading, isSuccess, data } = useSelector(
     (state) => state.products
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProducts(skip));
-  }, [skip]);
+    const minMax = data.map((d) => d.price);
+    console.log(minMax);
+    setFilters((prevState) => ({
+      ...prevState,
+      minPrice: Math.min(...minMax),
+      maxPrice: Math.max(...minMax),
+      maxValue: Math.max(...minMax),
+    }));
+  }, [skip, dispatch]);
 
   /*   useEffect(() => {
     if (!data) return;

@@ -5,7 +5,7 @@ import "./Filters.css";
 import { useSelector } from "react-redux";
 
 const Filters = () => {
-  const { setFilters, filters, orderProductsByPrice } = useFilters();
+  const { setFilters, filters } = useFilters();
   const { categories } = useSelector((state) => state.products);
 
   const maxPriceFilterId = useId();

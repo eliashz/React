@@ -2,25 +2,18 @@ import "./Products.css";
 import { AddToCartIcon, RemoveFromCartIcon } from "./Icons.jsx";
 import { useCart, useFilters } from "../hooks";
 import formatCurrency from "../helpers/formatCurrency";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { getProducts } from "../store/products.slice";
+import { useSelector } from "react-redux";
 
 const Products = ({ setSkip }) => {
   const { addToCart, removeFromCart, cart } = useCart();
   const { data } = useSelector((state) => state.products);
   console.log(data);
-  const { filterProducts } = useFilters();
+  const { filterProducts, setFilters } = useFilters();
 
   const products = filterProducts(data);
 
   const checkProductInCart = (product) =>
     cart.products.some((item) => item.id === product.id);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setSkip((prevState) => prevState + 9);
-  };
 
   return (
     <>
@@ -59,7 +52,10 @@ const Products = ({ setSkip }) => {
             })}
         </ul>
       </main>
-      <button className="loadMore-btn" onClick={(e) => handleClick(e)}>
+      <button
+        className="loadMore-btn"
+        onClick={() => setSkip((prevState) => prevState + 9)}
+      >
         Load More
       </button>
     </>
