@@ -24,6 +24,24 @@ const initialState = {
 const productsSlice = createSlice({
   name: "products",
   initialState,
+  extraReducers: (builder) => {
+    builder.addCase(getProducts.pending, (state) => {
+      state.isLoading = true;
+      state.isError = false;
+      state.isSuccess = false;
+    });
+    builder.addCase(getProducts.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.isSuccess = true;
+      state.products = action.payload;
+    });
+    builder.addCase(getProducts.rejected, (state) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.isLoading = false;
+    });
+  },
 });
 
 // export const {} = productsSlice.actions;
