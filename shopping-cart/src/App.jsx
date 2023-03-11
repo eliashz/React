@@ -3,7 +3,6 @@ import Products from "./components/Products";
 import { useFilters } from "./hooks/";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { findCategories } from "./helpers";
 import Cart from "./components/Cart";
 import { CartProvider } from "./context/cart";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,11 +14,7 @@ function App() {
   );
   const dispatch = useDispatch();
 
-  console.log("data", categories);
-
-  const { filterProducts, setFilters, filters } = useFilters();
-
-  const filteredProducts = filterProducts(data);
+  // console.log("data", categories);
 
   // const orderedProducts = orderProductsByPrice(products);
 
@@ -46,7 +41,7 @@ function App() {
         <CartProvider>
           <Header />
           <Cart />
-          <Products products={filteredProducts} />
+          <Products />
           {/* <Footer /> */}
         </CartProvider>
       )}
