@@ -5,11 +5,11 @@ export const getProducts = createAsyncThunk(
   "products/getProducts",
   async (_, thunkAPI) => {
     try {
-      const res = await fetch(url);
+      const res = await fetch(url.products);
       const data = await res.json();
-      console.log("dataFetch", data);
-      return data;
+      return data.products;
     } catch (err) {
+      console.log(err);
       return thunkAPI.rejectWithValue("Something wetn wrong.");
     }
   }
@@ -22,7 +22,7 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
 };
- 
+
 const productsSlice = createSlice({
   name: "products",
   initialState,
