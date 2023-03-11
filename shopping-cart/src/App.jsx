@@ -10,12 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "./store/products.slice";
 
 function App() {
-  const { data, isError, isLoading, isSuccess } = useSelector(
+  const { data, categories, isError, isLoading, isSuccess } = useSelector(
     (state) => state.products
   );
   const dispatch = useDispatch();
 
-  console.log("data", data);
+  console.log("data", categories);
 
   const { filterProducts, setFilters, filters } = useFilters();
 
@@ -44,7 +44,7 @@ function App() {
       {isError && <h5>Error</h5>}
       {isSuccess && (
         <CartProvider>
-          <Header categories={findCategories(data)} />
+          <Header />
           <Cart />
           <Products products={filteredProducts} />
           {/* <Footer /> */}

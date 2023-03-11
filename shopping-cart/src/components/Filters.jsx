@@ -2,9 +2,11 @@ import React, { useId } from "react";
 import formatCurrency from "../helpers/formatCurrency";
 import { useFilters } from "../hooks";
 import "./Filters.css";
+import { useSelector } from "react-redux";
 
-const Filters = ({ categories }) => {
+const Filters = () => {
   const { setFilters, filters, orderProductsByPrice } = useFilters();
+  const { categories } = useSelector((state) => state.products);
 
   const maxPriceFilterId = useId();
   const categoryFilterId = useId();

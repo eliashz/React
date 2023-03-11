@@ -39,6 +39,10 @@ const productsSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.data = action.payload;
+        action.payload.forEach((product) => {
+          if (!state.categories.includes(product.category))
+            state.categories.push(product.category);
+        });
       })
       .addCase(getProducts.rejected, (state) => {
         state.isLoading = false;
