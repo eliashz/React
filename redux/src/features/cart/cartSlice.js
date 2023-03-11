@@ -65,7 +65,7 @@ const cartSlice = createSlice({
         state.isError = false;
         state.cartItems = action.payload;
       })
-      .addCase(getCartItems.rejected, (state, action) => {
+      .addCase(getCartItems.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });

@@ -7,9 +7,9 @@ import { store } from "./store/store";
 import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <FiltersProvider>
-    <Provider store={store}>
+  <Provider store={store}>
+    <FiltersProvider>
       <App />
-    </Provider>
-  </FiltersProvider>
+    </FiltersProvider>
+  </Provider>
 );
