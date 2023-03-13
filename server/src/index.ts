@@ -12,6 +12,8 @@ app.get("/ping", (_req, res) => {
   res.send("Pong!");
 });
 
+app.use("/api/users", userRouter);
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
