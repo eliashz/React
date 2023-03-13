@@ -1,3 +1,5 @@
+export type Role = "admin" | "premium" | "user";
+
 export interface Product {
   id: number;
   titlte: string;
@@ -17,6 +19,7 @@ export interface User {
   name: string;
   email: string;
   password: string;
+  role: Role;
   cart?: Array;
   likes?: Array;
 }
