@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Products from "./components/Products";
-import { useFilters } from "./hooks/";
+import { useFilters } from "./hooks";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
