@@ -19,26 +19,15 @@ function App() {
 
   useEffect(() => {
     dispatch(getProducts(skip));
-    const minMax = data.map((d) => d.price);
-    console.log(minMax);
-    setFilters((prevState) => ({
+    /*    const minMax = data.map((d) => d.price);
+    console.log("min", minMax); */
+    /*     setFilters((prevState) => ({
       ...prevState,
       minPrice: Math.min(...minMax),
       maxPrice: Math.max(...minMax),
       maxValue: Math.max(...minMax),
-    }));
+    })); */
   }, [skip, dispatch]);
-
-  /*   useEffect(() => {
-    if (!data) return;
-    setProducts(data.products);
-    setFilters((prevState) => ({
-      ...prevState,
-      minPrice: Math.min(...data.products.map((d) => d.price)),
-      maxPrice: Math.max(...data.products.map((d) => d.price)),
-      maxValue: Math.max(...data.products.map((d) => d.price)),
-    }));
-  }, [data]); */
 
   return (
     <>
