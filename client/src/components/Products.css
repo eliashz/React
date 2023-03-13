@@ -41,6 +41,10 @@
     background: #fff;
   }
 
+  .products button:first-child {
+    margin-right: 1rem;
+  }
+
   .loadMore-btn {
     background-color: #646cff;
   }

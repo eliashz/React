@@ -1,5 +1,10 @@
 import "./Products.css";
-import { AddToCartIcon, RemoveFromCartIcon } from "./Icons.jsx";
+import {
+  AddToCartIcon,
+  LikesIcon,
+  RemoveFromCartIcon,
+  UserIcon,
+} from "./Icons.jsx";
 import { useCart, useFilters } from "../hooks";
 import formatCurrency from "../helpers/formatCurrency";
 import { useSelector } from "react-redux";
@@ -45,6 +50,13 @@ const Products = ({ setSkip }) => {
                       ) : (
                         <AddToCartIcon />
                       )}
+                    </button>
+                    <button
+                      style={{
+                        backgroundColor: "#09f",
+                      }}
+                    >
+                      <LikesIcon fill="none" />
                     </button>
                   </div>
                 </li>
