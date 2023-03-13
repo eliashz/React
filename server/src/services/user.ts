@@ -1,8 +1,8 @@
-import { User } from "../types";
-import userData from "./users.json";
+import { User } from '../types'
+import userData from './users.json'
 
-const users: Array<User> = userData as Array<User>;
+const users: User[] = userData as User[]
 
-export const getUsers = () => users;
+export const getUsers = (): User[] => users
 
-export const addUser = () => null;
+export const addUser = (): undefined => undefined
