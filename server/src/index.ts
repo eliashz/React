@@ -1,19 +1,19 @@
-import express from "express";
-import userRouter from "./routes/users";
+import express from 'express'
+import userRouter from './routes/users.route'
 
-const app = express();
+const app = express()
 
-app.use(express.json());
+app.use(express.json())
 
-const PORT = 3000;
+const PORT = 4000
 
-app.get("/ping", (_req, res) => {
-  console.log("Ping!");
-  res.send("Pong!");
-});
+app.get('/ping', (_req, res) => {
+  console.log('Ping!')
+  res.send('Pong!')
+})
 
-app.use("/api/users", userRouter);
+app.use('/api/users', userRouter)
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  console.log(`Server running on port ${PORT}`)
+})
