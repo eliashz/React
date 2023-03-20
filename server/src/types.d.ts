@@ -1,7 +1,7 @@
 export type Role = 'admin' | 'premium' | 'user'
 
 export interface Product {
-  id: number
+  id: string
   titlte: string
   description: string
   price: number
