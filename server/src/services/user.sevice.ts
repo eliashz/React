@@ -6,7 +6,7 @@ const users: User[] = userData as User[]
 export const getUsers = (): User[] => users
 
 export const findById = (id: string): User | undefined => {
-  const user = userData.find((d) => d.id === id)
+  const user = users.find((d) => d.id === id)
   return user
 }
 

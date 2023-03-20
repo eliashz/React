@@ -8,8 +8,9 @@ router.get('/', (_req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  const user = userServices.findById(+req.params.id)
-  res.send(user)
+  const user = userServices.findById(req.params.id)
+  console.log(user)
+  return user !== undefined ? res.send(user) : res.sendStatus(404)
 })
 
 router.post('/', (_req, res) => {
